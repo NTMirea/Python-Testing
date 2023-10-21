@@ -1,9 +1,84 @@
- Scenario: A Dealer can always play  # features/dealer.feature:38
-    Given a dealer                    # features/steps/steps.py:5
-    When the round starts             # features/steps/steps.py:28
-    Then the dealer chooses a play    # features/steps/steps.py:44
+ВЫВОД BDD:
+Scenario: : Раздача начальных карт  # features/dealer.feature:3
+    Given дилер                       # features/steps/steps.py:5
+    When начинается раунд             # features/steps/steps.py:27
+    Then дилер берет себе две карты   # features/steps/steps.py:37
+
+  Scenario Outline: : Получение итога руки -- @1.1 Руки  # features/dealer.feature:15
+    Given 5,7                                            # features/steps/steps.py:16
+    When дилер суммирует карты                           # features/steps/steps.py:22
+    Then 12 верен                                        # features/steps/steps.py:48
+
+  Scenario Outline: : Получение итога руки -- @1.2 Руки  # features/dealer.feature:16
+    Given 5,Q                                            # features/steps/steps.py:16
+    When дилер суммирует карты                           # features/steps/steps.py:22
+    Then 15 верен                                        # features/steps/steps.py:48
+
+  Scenario Outline: : Получение итога руки -- @1.3 Руки  # features/dealer.feature:17
+    Given Q,Q,A                                          # features/steps/steps.py:16
+    When дилер суммирует карты                           # features/steps/steps.py:22
+    Then 21 верен                                        # features/steps/steps.py:48
+
+  Scenario Outline: : Получение итога руки -- @1.4 Руки  # features/dealer.feature:18
+    Given Q,A                                            # features/steps/steps.py:16
+    When дилер суммирует карты                           # features/steps/steps.py:22
+    Then 21 верен                                        # features/steps/steps.py:48
+
+  Scenario Outline: : Получение итога руки -- @1.5 Руки  # features/dealer.feature:19
+    Given A,A,A                                          # features/steps/steps.py:16
+    When дилер суммирует карты                           # features/steps/steps.py:22
+    Then 13 верен                                        # features/steps/steps.py:48
+
+  Scenario Outline: : Дилер играет по правилам -- @1.1 Руки  # features/dealer.feature:28
+    Given рука с итогом 10                                   # features/steps/steps.py:10
+    When дилер определяет свой ход                           # features/steps/steps.py:32
+    Then hit верен                                           # features/steps/steps.py:53
+
+  Scenario Outline: : Дилер играет по правилам -- @1.2 Руки  # features/dealer.feature:29
+    Given рука с итогом 15                                   # features/steps/steps.py:10
+    When дилер определяет свой ход                           # features/steps/steps.py:32
+    Then hit верен                                           # features/steps/steps.py:53
+
+  Scenario Outline: : Дилер играет по правилам -- @1.3 Руки  # features/dealer.feature:30
+    Given рука с итогом 16                                   # features/steps/steps.py:10
+    When дилер определяет свой ход                           # features/steps/steps.py:32
+    Then hit верен                                           # features/steps/steps.py:53
+
+  Scenario Outline: : Дилер играет по правилам -- @1.4 Руки  # features/dealer.feature:31
+    Given рука с итогом 17                                   # features/steps/steps.py:10
+    When дилер определяет свой ход                           # features/steps/steps.py:32
+    Then stand верен                                         # features/steps/steps.py:53
+
+  Scenario Outline: : Дилер играет по правилам -- @1.5 Руки  # features/dealer.feature:32
+    Given рука с итогом 18                                   # features/steps/steps.py:10
+    When дилер определяет свой ход                           # features/steps/steps.py:32
+    Then stand верен                                         # features/steps/steps.py:53
+
+  Scenario Outline: : Дилер играет по правилам -- @1.6 Руки  # features/dealer.feature:33
+    Given рука с итогом 19                                   # features/steps/steps.py:10
+    When дилер определяет свой ход                           # features/steps/steps.py:32
+    Then stand верен                                         # features/steps/steps.py:53
+
+  Scenario Outline: : Дилер играет по правилам -- @1.7 Руки  # features/dealer.feature:34
+    Given рука с итогом 20                                   # features/steps/steps.py:10
+    When дилер определяет свой ход                           # features/steps/steps.py:32
+    Then stand верен                                         # features/steps/steps.py:53
+
+  Scenario Outline: : Дилер играет по правилам -- @1.8 Руки  # features/dealer.feature:35
+    Given рука с итогом 21                                   # features/steps/steps.py:10
+    When дилер определяет свой ход                           # features/steps/steps.py:32
+    Then stand верен                                         # features/steps/steps.py:53
+
+  Scenario Outline: : Дилер играет по правилам -- @1.9 Руки  # features/dealer.feature:36
+    Given рука с итогом 22                                   # features/steps/steps.py:10
+    When дилер определяет свой ход                           # features/steps/steps.py:32
+    Then stand верен                                         # features/steps/steps.py:53
+
+  Scenario: : Дилер всегда может сделать ход  # features/dealer.feature:38
+    Given дилер                               # features/steps/steps.py:5
+    When начинается раунд                     # features/steps/steps.py:27
+    Then дилер выбирает ход                   # features/steps/steps.py:43
 
 1 feature passed, 0 failed, 0 skipped
 16 scenarios passed, 0 failed, 0 skipped
 48 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.011s
