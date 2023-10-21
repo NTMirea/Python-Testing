@@ -2,56 +2,54 @@ from behave import *
 from twentyone import *
 
 
-@given('a dealer')
+@given('дилер')
 def step_impl(context):
     context.dealer = Dealer()
 
 
-## NEW STEP
-@given('a hand {total:d}')
+@given('рука с итогом {total:d}')
 def step_impl(context, total):
     context.dealer = Dealer()
     context.total = total
 
 
-@given('a {hand}')
+@given('{hand}')
 def step_impl(context, hand):
     context.dealer = Dealer()
     context.dealer.hand = hand.split(',')
 
 
-@when('the dealer sums the cards')
+@when('дилер суммирует карты')
 def step_impl(context):
     context.dealer_total = context.dealer.get_hand_total()
 
 
-@when('the round starts')
+@when('начинается раунд')
 def step_impl(context):
     context.dealer.new_round()
 
 
-@when('the dealer determines a play')
+@when('дилер определяет свой ход')
 def step_impl(context):
     context.dealer_play = context.dealer.determine_play(context.total)
 
 
-@then('the dealer gives itself two cards')
+@then('дилер берет себе две карты')
 def step_impl(context):
     assert (len(context.dealer.hand) == 2)
 
 
 # NEW STEP
-@then('the dealer chooses a play')
+@then('дилер выбирает ход')
 def step_impl(context):
     assert (context.dealer.make_play() in ['stand', 'hit'])
 
 
-@then('the {total:d} is correct')
+@then('{total:d} верен')
 def step_impl(context, total):
     assert (context.dealer_total == total)
 
 
-## NEW STEP
-@then('the {play} is correct')
+@then('{play} верен')
 def step_impl(context, play):
     assert (context.dealer_play == play)
