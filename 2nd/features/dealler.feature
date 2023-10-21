@@ -1,16 +1,16 @@
-Feature: The dealer for the game of 21
+Feature: Дилер для игры в 21
 
-  Scenario: Deal initial cards
-    Given a dealer
-    When the round starts
-    Then the dealer gives itself two cards
+  Scenario: : Раздача начальных карт
+    Given дилер
+    When начинается раунд
+    Then дилер берет себе две карты
 
-  Scenario Outline: Get hand total
-    Given a <hand>
-    When the dealer sums the cards
-    Then the <total> is correct
+  Scenario Outline: : Получение итога руки
+    Given <hand>
+    When дилер суммирует карты
+    Then <total> верен
 
-    Examples: Hands
+    Examples: Руки
       | hand  | total |
       | 5,7   | 12    |
       | 5,Q   | 15    |
@@ -18,12 +18,12 @@ Feature: The dealer for the game of 21
       | Q,A   | 21    |
       | A,A,A | 13    |
 
-  Scenario Outline: Dealer plays by the rules
-    Given a hand <total>
-    When the dealer determines a play
-    Then the <play> is correct
+  Scenario Outline: : Дилер играет по правилам
+    Given рука с итогом <total>
+    When дилер определяет свой ход
+    Then <play> верен
 
-    Examples: Hands
+    Examples: Руки
       | total | play  |
       | 10    | hit   |
       | 15    | hit   |
@@ -35,7 +35,7 @@ Feature: The dealer for the game of 21
       | 21    | stand |
       | 22    | stand |
 
-  Scenario: A Dealer can always play
-    Given a dealer
-    When the round starts
-    Then the dealer chooses a play
+  Scenario: : Дилер всегда может сделать ход
+    Given дилер
+    When начинается раунд
+    Then дилер выбирает ход
